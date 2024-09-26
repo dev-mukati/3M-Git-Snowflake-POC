@@ -1,14 +1,11 @@
 name: snowflake-dev-migration
 
-# Controls when the action will run.
 on:
   push:
     branches:
       - sf-qa
     paths:
       - 'deploy/**'
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -16,14 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repository
-        uses: actions/checkout@v3  # Upgraded to v3
+        uses: actions/checkout@v3
 
       - name: Use Python 3.8.x
-        uses: actions/setup-python@v4  # Upgraded to v4
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.8'  # Ensures Python 3.8.x is used
+          python-version: 3.8
+
+      # List contents of the repository
+      - name: List repository contents
+        run: ls -R $GITHUB_WORKSPACE
 
       - name: Run schemachange
         env:
@@ -36,8 +36,5 @@ jobs:
         run: |
           echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
           python --version
-          echo "Step 1: Installing schemachange"
           pip install schemachange
-          
-          echo "Step 2: Running schemachange"
           schemachange deploy -f $GITHUB_WORKSPACE/Deploy -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table
