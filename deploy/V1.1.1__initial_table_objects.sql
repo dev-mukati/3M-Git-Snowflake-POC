@@ -47,3 +47,7 @@ INSERT INTO DMDMD01.DEPARTMENTS VALUES
    ( 80 , 'Sales', 145, 2500),
    ( 90 , 'Executive', 100, 1700),
     ( 100 , 'Finance', 108, 1700) ;
+
+
+CREATE OR REPLACE TABLE DMDMD01.EMP_INFO_TEST
+   ( employee_id NUMBER(6) );
