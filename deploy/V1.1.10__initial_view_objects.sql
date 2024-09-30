@@ -1,4 +1,4 @@
-create or replace view DMDMV01.V01_EMP_INFO_DEMO_4(
+create or replace view DMDMV01.V01_EMP_INFO_DEMO_5 (
 	EMPLOYEE_ID,
 	FIRST_NAME,
 	LAST_NAME,
@@ -7,7 +7,6 @@ create or replace view DMDMV01.V01_EMP_INFO_DEMO_4(
 	HIRE_DATE,
 	JOB_ID,
 	SALARY,
-	--COMMISSION_PCT,
 	MANAGER_ID,
 	DEPT_ID,
 	SOURCE
